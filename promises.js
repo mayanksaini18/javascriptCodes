@@ -1,15 +1,45 @@
-function medician1get(){
-    console.log ("medician 1 ")
-    setTimeout(medician2get, 3000)
-    setTimeout(medician3get, 2000)
-
-}
-function medician2get(){
-    console.log ("medician 2 ")
-}
-function medician3get(){
-    console.log ("medician 3 ")
+function promiseBody(resolve, reject) {
+    setTimeout(() => {
+        resolve("Medician received after 5 seconds");
+    }, 5000);
 }
 
+function medician1get() {
+    var answer = new Promise(promiseBody);
+    return answer;
+}
 
-medician1get();
+function printThing() {
+    console.log("Medician 1 received");
+}
+
+var medicianPromise = medician1get();
+console.log(medicianPromise);  // Logs a pending Promise initially
+
+medicianPromise.then(printThing);  // Will log after 5 seconds
+
+
+
+
+/**
+ *
+
+START
+↓
+Define functions
+↓
+Call medician1get → Creates promise with 5s timer
+↓
+Log Promise (pending)
+↓
+Attach .then(printThing)
+↓
+...wait 5 seconds...
+↓
+Promise resolves
+↓
+printThing() runs → Logs "Medician 1 received"
+END
+
+ */
+
