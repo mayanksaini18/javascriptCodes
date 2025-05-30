@@ -1,5 +1,5 @@
 // string to array  str.split(" ") - space work s a seperator
-// array to string   str.join
+// array to string   str.join("")
  
 
 // to check the anagram string  -we first have to sort both strings bcoz as we sort both the string the character is align in an order and then it easy to check so we fiRst make that string in an array and thenn sort () bcoz sort() function is works on arrays not on directly string  and thenwe compare !
