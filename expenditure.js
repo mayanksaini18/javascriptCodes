@@ -70,12 +70,7 @@ var transactions = [
         price: 30,
         timestamp: "25-june-25"
     },
-    {
-        itemName: "poha",
-        category: "food",
-        price: 45,
-        timestamp: "25-june-25"
-    }
+    
 ]
 
 // Step 5: Call the function with the transactions array
