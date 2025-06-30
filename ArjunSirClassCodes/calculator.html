@@ -9,18 +9,22 @@
     <h1>Calculator</h1>
     
     <textarea name="" id="result"></textarea>
-    <button id="one">1</button>
-    <button id="two">2</button>
-    <button id="three">3</button>
-    <button id="four">4</button>
-    <button id="five">5</button>
-    <button id="six">6</button>
-    <button id="seven">7</button>
-    <button id="eight">8</button>
-    <button id="nine">9</button>
-    <button id="zero">0</button>
-    <button id="clear" onclick="">clear</button>
-    <button id="calculate">=</button>
+    <button id="one" onclick="appendToResult(1)">1</button>
+    <button id="two"  onclick="appendToResult(2)">2</button>
+    <button id="three"  onclick="appendToResult(3)">3</button>
+    <button id="four" onclick="appendToResult(4)">4</button>
+    <button id="five" onclick="appendToResult(5)">5</button>
+    <button id="six" onclick="appendToResult(6)">6</button>
+    <button id="seven" onclick="appendToResult(7)">7</button>
+    <button id="eight" onclick="appendToResult(8)">8</button>
+    <button id="nine" onclick="appendToResult(9)">9</button>
+    <button id="zero" onclick="appendToResult(0)">0</button>
+    <button id="plus" onclick="appendToResult('+')">+</button>
+    <button id="minus" onclick="appendToResult('-')">-</button>
+    <button id="multiply" onclick="appendToResult('*')">*</button>
+    <button id="divide" onclick="appendToResult('/')">/</button>
+    <button id="clear" onclick="clearResult()">clear</button>
+    <button id="calculate" onclick="calculateResult()">=</button>
 
     
     <script >
@@ -30,6 +34,17 @@
         const calculateButton = document.getElementById("calculate"); 
         function appendToResult(value) {
             let currentValue = result.value;
+            if (currentValue === "0") {
+                currentValue = ""; // Clear the initial zero
+            }
+            result.value = currentValue + value;
+        }
+        function clearResult() {
+            result.value = "";
+        }
+        function calculateResult() {
+             result.value = eval(result.value);
+             result.innerHTML = result.value; // Display the result in the textarea
         }
     </script>
 </body>
