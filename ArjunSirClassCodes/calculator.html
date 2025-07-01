@@ -8,11 +8,11 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f5f5f5;
+            background-color: #212121;
             padding: 50px;
         }
         h1 {
-            color: #333;
+            color: #ffffff;
         }
         #result {
             width: 250px;
@@ -71,6 +71,12 @@
     <button id="minus" onclick="appendToResult('-')">-</button>
     <button id="multiply" onclick="appendToResult('*')">*</button>
     <button id="divide" onclick="appendToResult('/')">/</button>
+    <button id="dot" onclick="appendToResult('.')">.</button>
+    <button id="openParen" onclick="appendToResult('(')">(</button>
+    <button id="closeParen" onclick="appendToResult(')')">)</button>
+    <button id="percent" onclick="appendToResult('%')">%</button>
+    <button id="power" onclick="appendToResult('**')">^</button>
+    <!-- <button id="sqrt" onclick="appendToResult('Math.sqrt(')">√</button> -->
     <button id="clear" onclick="clearResult()">clear</button>
     <button id="calculate" onclick="calculateResult()">=</button>
 
