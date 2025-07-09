@@ -1,0 +1,443 @@
+HTML ====> Static DOM
+CSS  ====> Styling for Static DOM
+Bootstrap ===> Style for Static DOM by using inbuilt classes
+
+Make the UI dynamic  : Javascript[ Javascript as Asynchrnous , Read API's to render the data on UI]
+
+
+Styles of Programming
+=====================
+ a. Procedure Oriented Programming  : functions
+					a. parameter passing technique : pass by value, pass by reference
+				      Limitations
+					a. No security for Data
+
+ b. Object Oriented Programming    : Security,Abstraction,Inhertiance,Encapsulation
+					Functional Programming
+
+ c. Aspect Oriented Programming    : Seperate Buisness Logic from Cross Cutting Concerns.
+
+
+JavaScript
+  a. UI Level [Browser]
+
+
+How javascript would take over the control of HTML Elements?
+ -> Using the api's of DOM.
+	a. id : document.getElementById('idName') : HTMLElement
+	b. classname : document.getElementsByClassName('className'): HTMLCollection[]
+	c. Tagname   : document.getElementsByTagName('tagName')    : HTMLCollection[]
+
+      Using CSS
+	a. document.querySelector("cssSelection"): HTMLElement
+	b. document.querySelectorAll("cssSelection"): NodeList[]
+
+Q> What is the difference b/w HTMLCollection[] vs NodeList[]
+
+Ans. HTMLCollection[] : We can't use forEach() directly
+			Convert into Array using : Array.from(variable)
+			To check whether its an Array type : Array.isArray(variable)
+
+    NodeList[]        : We can use forEach() directly.
+
+Q> What is the difference b/w applying style using property individually and applying styles directly using cssText?
+Ans. if we use css style individually then overiding will happen only to the reused properties, where as if we use cssText 
+     then entire line will be replaced.
+	cssText : inline-style
+        style.property=value : inline-style
+
+
+eg#1.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="main" class="box">
+        <p class="box">Hello</p>
+        <p class="box">World</p>
+    </div>
+
+
+    <script type="text/javascript">
+        let arr = document.getElementsByClassName("box");
+
+        let arr1 = Array.from(arr);
+        console.log(Array.isArray(arr1));
+        let iterate1 = function (element) {
+            element.style.cssText = 'color:blue; font-size:25px; font-family:Algerian';
+        }
+
+        arr1.forEach(iterate1);
+
+        let iterate2 = function (element) {
+            element.style.cssText = 'color:red;';
+        }
+        let arr2 = document.querySelectorAll(".box");
+        arr2.forEach(iterate2);
+    </script>
+</body>
+
+</html>
+
+ querySelectorAll() : NodeList[][Static] : snapshot
+ getElementsByClassName() : HTMLCollection[][Dynamic] : Live
+
+eg#2.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <p class="item">Item 1</p>
+        <p class="item">Item 2</p>
+    </div>
+
+    <button onclick="addItem()">Add Item</button>
+
+    <script type="text/javascript">
+        let items = document.querySelectorAll(".item");
+        console.log("No of Elements with class name item : ", items.length);
+
+        function addItem() {
+            let p = document.createElement("p");//<p> </p>
+            p.className = 'item'//<p class='item'> </p>
+            p.textContent = 'Item 3'; //<p class='item'> Item 3 </p>
+
+            document.getElementById("container").appendChild(p);
+            /*
+            <div id="container">
+                <p class="item">Item 1</p>
+                <p class="item">Item 2</p>
+                <p class='item'>Item 3 </p>
+                </div>  
+                */
+            console.log("No of Elements with class name item : ", items.length);
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+=====DAY 4 ===
+
+Javascript DOM
+==============
+-> Using Javascript we can make DOM dynamic.
+-> Javascript will take over HTML elements using the following mechanism
+	a. id : getElementById()  : HTMLElement | null
+	b. className : getElementsByClassName() : HtmlCollection[] | null
+	c. TagName   : getElementsByTagName()   : HTMLCollection[] | null
+	d. querySelector()  : HTMLElement | null
+	e. querySelectorAll() : NodeList[] |null
+
+Static DOM vs Dynamic DOM
+=========================
+static  : Dynamic changes won't be reflected if we target the element by id|querySelector
+dynamic : Dynamic changes would be refelected if we target the element by className|tagName|querySelectorAll 
+
+JavaScript flow of execution
+============================
+ => Code would run in Execution Context.
+ => Creation of Execution Context happens in 2phase 
+	a. Memory creation phase
+		-> Allocation of memory and storing them in the form of K:V
+		-> Memory for var will be given a default value : undefined
+		-> Memory for let and const will be in 'Temporal Dead Zone'.
+		-> Memory for function will be stored in the form of key value pair wher key is function name and value is body of 
+		    the function.
+
+	b. Code Execution phase
+		-> JSEngine creates a single line of execution with which the execution starts.
+		-> Javascript is single threaded synchronous programming language.
+
+-> Execution Context information will be stored in stack[LIFO]
+
+Different ways of declaring a variable
+===================================== 
+ var  : redeclaration,reassignment, global scope[window,this]
+ let  : redeclaration(not possible in same scope), reassignment (possible)
+ const: redeclaration(not possible in same scope), reassignment (not possible),should be initialized at the time of declaration.
+
+eg#1.
+ 	var a = 100;   //Global Scope
+        function printResult() {
+            console.log(a);
+            console.log(window.a);
+            console.log(this.a);
+        }
+        printResult();
+
+Outpu: 100 100 100
+
+
+
+
+let , var , const
+=================
+1. 
+let a = 10; //script scope
+var b = 20; //global scope
+console.log(a); // 10
+
+2.
+console.log(a); //Reference Error 
+let a = 10;
+var b = 20;
+
+3.   
+let a;
+a = 10; //scipt scope
+console.log(a); //10
+    
+
+4. 
+let a = 100;
+let a = 200;
+console.log(a);//SyntaxError
+
+5. 
+const a; 
+a = 20;
+console.log(a);//SytaxError
+
+6. 
+const a =10;
+a =100;
+console.log(a);//TypeError
+
+
+block scope[let | const]
+==========================
+eg#1.
+{
+	var a =100;
+	let b = 200;
+	const c=  300;
+}
+console.log(a);
+console.log(b); //ReferenceError
+console.log(c);
+
+
+
+eg#2.
+{
+	var a =100;
+	let b = 200;
+	const c=  300;
+	console.log(a);//100
+	console.log(b);//200
+	console.log(c);//300
+}
+console.log(a);//100
+
+
+
+Shadowing
+=========
+eg#1.
+var a =1; //global scope
+{
+	var a =100;
+
+	let b = 200;//block scope
+	const c=  300;//block scope
+	console.log(a);
+	console.log(b);
+	console.log(c);
+}
+console.log(a);//100
+console.log(b);//ReferenceError
+console.log(c);
+
+
+eg#2.
+
+let b =1; //module scope
+{
+	var a =100;//global scope
+	let b = 200;//block scope
+	const c=  300;//block scope
+	console.log(a); //100
+	console.log(b); //200
+	console.log(c); //300
+}
+console.log(a);//100
+console.log(b);//1
+console.log(c);//ReferenceError
+
+
+eg#3.
+const c =1; //module scope
+{
+	var a =100;//global scope
+	let b = 200;//block scope
+	const c=  300;//block scope
+	console.log(a);//100
+	console.log(b);//200
+	console.log(c);//300
+}
+console.log(a);//100
+console.log(c);//1
+console.log(b);//ReferenceError
+
+
+eg#4.
+let a = 10;
+{
+    var a = 100;//SyntaxError
+}
+console.log(a);
+
+eg#5.
+let a= 100;
+{
+	let a = 200;
+	console.log(a);
+}
+
+Datatypes in javascript
+=======================
+In Javascript we have datatype , but those datatype are not for programmer, it is needed for runtime engine to 
+process the instruction
+
+
+function add(a,b){
+         console.log("Datatype of a,b",(typeof a,typeof b);
+	console.log("The result is : ",(a+b));
+}
+
+add(10,20);
+add('sachin','tendulkar');
+add('sachin',10);
+
+output
+30
+sachintendulkar
+sachin10
+
+Datatypes will be used in 2 different levels
+ a. Primitive type	: number,string,boolean,null,undefined,Symbol[ES+6],BigInt[ES+6]
+                     a. Memory will be given in stack 
+                     b.Range and size is toFixed
+                     c. Immutable – can't be changed directly
+ b. NonPrimitive type   : Arrays,Objects,Map,Date,functions,RegExp
+                     a. memory will bw given in heap 
+                     b. range and size is not fixed 
+                     c . Mutable – values can be changed after creation
+
+number: [IEE754 double precession]
+	11 bits : exponent
+	52 bits : mantissa
+         1 bits : sing bit(+ve | -ve)
+
+	Maximum SAFE value : 2^52 - 1
+
+
+eg#1.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+        console.log("Max Safe Number is : ", Number.MAX_SAFE_INTEGER);
+        let a = 9007199254740991;
+        let b = 9007199254740992;
+        let c = 9007199254740993;
+        console.log(a);
+        console.log(b == b + 1);
+        console.log(c == c + 1);
+
+        //BigInt
+        let x = 9007199254740991n;
+        console.log(x == x + 1n);
+        console.log(x == x + 2n);
+        console.log(x == x + 3n);
+
+        console.log(0.1 + 0.2);
+        console.log((0.1 + 0.2).toFixed(3));
+        console.log(0.36 + 0.53);
+
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+====String in js ======
+A string in JavaScript is a sequence of characters used to represent text. Strings are primitive data types and immutable.
+
+representation 
+let name = "Mayank";  // using double quotes
+let city = 'Delhi';   // using single quotes
+let quote = `Hello`;  // using backticks (template literals)
+
+let str = 'sachin'
+console.log(str.length)  //str is of string type which is primitive but it faciliates the user by creating an object  for our primitive type and we can used some properties and method
+
+Method	                     Description
+length	                Returns length of string
+toUpperCase()	        Converts to uppercase
+toLowerCase()	         Converts to lowercase
+charAt(index)	          Returns character at given index
+indexOf(substring)         	First occurrence index
+lastIndexOf(substring)       Last occurrence index
+includes(substring)          Checks if substring exists
+startsWith(prefix)	           Checks start
+endsWith(suffix)	            Checks end
+slice(start, end?)           	Extracts part of string
+substring(start, end)        	Similar to slice but can't accept negative index
+replace(find, value)	         Replace text
+trim()	                    Removes whitespaces (start & end)
+split(delimiter)	      Splits string into array
+concat()	          Joins strings
+repeat(count)         	Repeats string multiple times
+
+
+***String Concatenation***
+let fname = "Mayank";
+let lname = "Saini";
+
+console.log(fname + " " + lname);         // Old way
+console.log(`${fname} ${lname}`);        // Template literal (modern)
+
+
+***String object 
+let strObj = new String("Hello");
+
+  let str1 = 'sachin '
+  let str2 = new String('sachin')
+
+      console.log(str1==str2); // true - compare only value
+      console.log(str1===str2); // false - check type and then value
+
+String 
+  properties : length 
+  method :  toUpperCase() , toLowerCase() , trim() , concat()
