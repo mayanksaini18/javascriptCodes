@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #201e1e;
+            background-color: #212121;
+            color: #ffffff;
             margin: 0;
             padding: 20px;
         }
@@ -16,10 +16,28 @@
     </style>
 </head>
 <body>
-     <div class="bg-black">
+     <div class="info">
         <h1>mayank saini</h1>
-        <p>helllo my name is mayank , web developer </p>
-     </div>
+        <h1>manik saini</h1>
+        <h1>maan singh saini saini</h1>
+        <p>hello, my name is mayank , web developer </p>
+    </div>
+<div class="techStack">
+       <h2>TECK stack </h2>
+       <li>c</li>
+         <li>c++</li>
+            <li>java</li>
+            <li>python</li>
+</div>
+<div class="hobbies">
+       <h2>Hobbies</h2>
+       <ul>
+           <li>Reading Books</li>
+           <li>Cycling</li>
+           <li>Traveling</li>
+          
+       </ul>">
+</div>
      <script type="text/javascript">
          // Accessing the document object
             console.log(document);
@@ -32,9 +50,13 @@
             // Accessing the first p element
             console.log(document.querySelector('p'));
             // Accessing all div elements
-            console.log(document.querySelectorAll('div'));
+            console.log(document.querySelectorAll('div')); // Returns a NodeList of all div elements
             // Accessing all elements with class 'bg-black'
-            console.log(document.getElementsByClassName('bg-black'));
+            console.log(document.getElementsByClassName('bg-black')); // Returns an HTMLCollection of elements with class 'bg-black
+
+            //====differ b/w nodelist and htmlcollection======
+            // NodeList is a collection of nodes that can be iterated using forEach , nodeList ia a snapshot of the document 
+            // HTMLCollection is a live collection of elements that updates automatically when the document changes ,html collection is a live collection of elements 
            
 
      </script>
@@ -48,3 +70,5 @@
    window  -> document ->html -> head -> meta
                               -> body -> div -> h1
                                              -> p
+
+
