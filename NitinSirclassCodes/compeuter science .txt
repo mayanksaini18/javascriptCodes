@@ -1,0 +1,35 @@
+TOC + CD     s/w 
+DLD + COA    h/w 
+ OS + CN + DBMS    system 
+  ALGO  + PDS      logic
+
+
+  📘 Software (S/W)
+Focuses on how to write and organize programs, manage data, and control code flow.
+
+TOC (Theory of Computation) – Foundations of how computation works (automata, Turing machines, etc.)
+
+CD (Compiler Design) – Translating high-level code to machine code
+
+💻 Hardware (H/W)
+Deals with the physical and low-level logical components of the computer system.
+
+DLD (Digital Logic Design) – Circuits, gates, flip-flops, and basic digital electronics
+
+COA (Computer Organization & Architecture) – Structure and behavior of the actual computer hardware
+
+⚙️ System-Level Subjects
+These manage system operations, communication, and data organization internally.
+
+OS (Operating System) – Process, memory, file, and resource management
+
+CN (Computer Networks) – Data transmission, protocols, networking layers
+
+DBMS (Database Management System) – Organizing, storing, retrieving, and managing data
+
+🧠 Logic-Based/Problem-Solving Subjects
+Focused on computational thinking and algorithmic problem-solving.
+
+ALGO (Algorithms) – Design and analysis of efficient solutions to problems
+
+PDS (Programming and Data Structures) – Writing efficient programs and organizing data
