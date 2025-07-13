@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #212121;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+        </style>
+    <title>To Do list</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">To Do List</h1>
+        <form id="todoForm" class="mb-4">
+            <div class="input-group">
+                <input type="text" id="todoInput" class="form-control" placeholder="Add a new task" required>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+        <h2 class="text-center">Your Tasks</h2>
+         
+        <ul id="todoList" class="list-group">
+            <!-- To Do items will be added here -->
+             </ul>
+    </div>
+    <script>
+    document.getElementById('todoForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const todoInput = document.getElementById('todoInput');
+        const todoText = todoInput.value.trim();
+        
+    if (todoText !== '') {
+        let li = document.createElement('li');
+        li.innerHTML = `${todoText} <button class="btn btn-danger btn-sm float-end">Delete</button>`;
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+        // Append the new item
+        document.getElementById('todoList').appendChild(li);
+
+        // Delete logic
+        const deleteButton = li.querySelector('button');
+        deleteButton.onclick = function () {
+            li.remove();
+        };
+
+        // Clear input after adding
+        todoInput.value = '';
+    }
+});
+</script>
+       
+
+
+</body>
+</html>
