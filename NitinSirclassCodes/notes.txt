@@ -417,6 +417,7 @@ substring(start, end)        	Similar to slice but can't accept negative index
 replace(find, value)	         Replace text
 trim()	                    Removes whitespaces (start & end)
 split(delimiter)	      Splits string into array
+
 concat()	          Joins strings
 repeat(count)         	Repeats string multiple times
 
@@ -440,4 +441,42 @@ let strObj = new String("Hello");
 
 String 
   properties : length 
-  method :  toUpperCase() , toLowerCase() , trim() , concat()
+  method :  toUpperCase() ,
+   toLowerCase() ,
+    trim() ,
+     concat()
+     charAt() :string
+     charCodeAt() :number
+     startsWith() :boolean
+     endsWith()  :boolean
+     indexOf() : number
+     lastIndexOf() : number 
+
+     let str = 'welcome'
+
+     console.log(str.indexof('e')) // 1
+     console.log(str.lastIndexOf('e')) // 6
+
+
+Retrieving Substrings 
+===============================================================================
+.slice(start, end)         
+slice(start?:number, end?: number): string
+=> it is used to extract the character b/w specified index 
+
+parameters:
+start(required): The index at which to start the extraction (inclusive).
+       if negative , it is  treat as array .length - start
+
+end(optional): The index at which to end the extraction (exclusive).  
+              if omited, it extracts till the end
+              if neagative, it is treated as array.length - end     
+
+key feature :
+   supports negative index 
+   does not swap indices if start > end
+   return an empty string if start is greater than the end index
+   
+   
+ note :
+  NaN :
