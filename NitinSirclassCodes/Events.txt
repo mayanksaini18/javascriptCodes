@@ -1,0 +1,87 @@
+
+
+1. click
+--------
+- Fires when the user clicks on an element.
+Example:
+button.addEventListener("click", function() {
+  alert("Button clicked!");
+});
+
+2. input
+--------
+- Fires when the value of an input/textarea changes (live).
+Example:
+input.addEventListener("input", function() {
+  console.log(this.value);
+});
+
+3. change
+---------
+- Fires when the value changes and the element loses focus.
+Example:
+input.addEventListener("change", function() {
+  console.log("Final value:", this.value);
+});
+
+4. keydown
+----------
+- Fires when a key is pressed down.
+Example:
+input.addEventListener("keydown", function(e) {
+  console.log("Key pressed:", e.key);
+});
+
+5. keyup
+--------
+- Fires when a key is released.
+Example:
+input.addEventListener("keyup", function(e) {
+  console.log("Key released:", e.key);
+});
+
+6. focus
+--------
+- Fires when an element gains focus.
+Example:
+input.addEventListener("focus", function() {
+  input.style.borderColor = "blue";
+});
+
+7. blur
+-------
+- Fires when an element loses focus.
+Example:
+input.addEventListener("blur", function() {
+  input.style.borderColor = "gray";
+});
+
+8. submit
+---------
+- Fires when a form is submitted.
+Example:
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("Form submitted!");
+});
+
+9. mouseover / mouseout
+------------------------
+- mouseover: triggered when mouse enters an element
+- mouseout: triggered when mouse leaves the element
+Example:
+element.addEventListener("mouseover", () => {
+  element.style.backgroundColor = "yellow";
+});
+element.addEventListener("mouseout", () => {
+  element.style.backgroundColor = "transparent";
+});
+
+10. load
+--------
+- Fires when the whole page and its assets are loaded.
+Example:
+window.addEventListener("load", () => {
+  console.log("Page fully loaded!");
+});
+
