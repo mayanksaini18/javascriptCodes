@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = 'SachinRameshTendulkar';
+        /**
+        console.log(a.slice(0, 6)); // Sachin
+        console.log(a.slice(6)); // RameshTendulkar
+        console.log(a.slice(12, 20)); // Tendulkar
+        
+
+        console.log(a.slice(6, 12)); // Ramesh
+        console.log(a.slice(0, -6)); // SachinRamesh
+        // Negative indices count from the end of the string :internally convert into a.length - 6
+        console.log(a.slice(-6)); 
+        console.log(a.slice(6, 12)); 
+        console.log(a.slice(-6, -1));
+
+        console.log(a.slice()); // SachinRameshTendulkar
+        console.log(a.slice(undefined,undefined)); // SachinRameshTendulkar
+        console.log(a.slice(NaN, NaN)); // SachinRameshTendulkar
+        console.log(a.slice(NaN,undefined)); // SachinRameshTendulkar
+        console.log(a.slice(null, null)); // SachinRameshTendulkar
+
+   **/
+
+
+//    substring() method
+
+
+console.log(a.substring(0, 0)); 
+console.log(a.substring(0, 6)); // Sachin
+console.log(a.substring(6, 12)); // Ramesh
+console.log(a.substring(12, 20)); // Tendulkar
+console.log(a.substring(6)); // RameshTendulkar
+console.log(a.substring(6, 6)); // empty string
+
+console.log(a.substring(NaN, NaN)); // empty string
+console.log(a.substring(NaN, undefined)); // empty string
+console.log(a.substring(null, null)); // empty string
+
+
+
+// split() method
+//   let s = 'Sachin-Ramesh-Tendulkar';
+//     console.log(s.split("-")); // ['Sachin', 'Ramesh', 'Tendulkar']
+//     console.log(s.split("-"),1); // ['Sachin', 'Ramesh-Tendulkar']
+
+//     console.log(s.split(" "));
+//  
+   </script>
+    
+</body>
+</html>
+
+<!-- numnber of null is 0 -->
+ <!-- 
+Retrieving Substrings 
+.slice(start, end)         
+slice(start?:number, end?: number): string
+=> it is used to extract the character b/w specified index 
+
+parameters:
+start(required): The index at which to start the extraction (inclusive).
+       if negative , it is  treat as array .length - start
+
+end(optional): The index at which to end the extraction (exclusive).  
+              if omited, it extracts till the end
+              if neagative, it is treated as array.length - end     
+
+key feature :
+   supports negative index 
+   does not swap indices if start > end
+   return an empty string if start is greater than the end index
+   
+   
+ note :
+      NaN :  
+      undefined :
+
+
+
+
+.substring(start, end)
+substring(start:number, end?: number): string
+=> it is used to extract the character b/w specified index which can be bi directional
+
+pararmeters:
+start(required): 
+end(optional):
+
+key points:
+if start > end, it swaps the indices
+if start or end is negative or NaN , it is treated as 0
+if end is omitted , it extracts up to the end of the string
+ -->
