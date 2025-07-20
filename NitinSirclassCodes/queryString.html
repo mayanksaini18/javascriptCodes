@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // String :URL ?K1=V1&K2=V2&K3=V3
+
+        let qs = window.location.search;
+        console.log(qs); 
+        console.log("key is : " + qs.slice(1, qs.indexOf("="))); 
+        console.log("value is : " + qs.slice(qs.indexOf("=") + 1, qs.indexOf("&")));
+    </script>
+</body>
+</html>
