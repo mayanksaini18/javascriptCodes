@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+<body class="container mt-5">
+    <dl>
+        <dd>username:</dd>
+        <dd><input type="input" name="" id="username"></dd>
+        <dd><input type="checkbox" name="" id="toggle">lock|unlock</dd>
+
+        <!--  sort the data  -->
+        <button class="btn btn-outline-primary" id="sortBtn">
+          <i class="bi bi-sort-alpha-up" id="sortIcon"></i>
+   </button>
+
+    </dl>
+    <script>
+        document.getElementById("toggle").addEventListener("click", function() {
+            let username = document.getElementById("username");
+            if (this.checked) {
+                 username.disabled = true; 
+            } else {
+                username.disabled = false;
+            }
+        });
+
+        // sort the data
+        document.getElementById("sortBtn").addEventListener("click", function() {
+            let sortIcon = document.getElementById("sortIcon"); 
+            
+            if(sortIcon.classList.contains("bi-sort-alpha-up")) {
+                sortIcon.classList.remove("bi-sort-alpha-up");
+                sortIcon.classList.add("bi-sort-alpha-down");
+            } else {
+                sortIcon.classList.remove("bi-sort-alpha-down");
+                sortIcon.classList.add("bi-sort-alpha-up");
+            }
+        });
+
+    </script>
+</body>
+</html>
+
+
+<!-- boolean
+====================================
+
+-.true and false 
+-> any no other value than zero is true  , 0|-0,is treated as false
+
+HTML attribute which are of boolean type 
+
+<img border="0|1">
+<input checked>
+<input readonly>
+<input required>
+<input disabled>
+
+-->
