@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="email" id="email" placeholder="Enter your email" required>
+    </form>
+
+
+
+    <script>
+document.getElementById("email").addEventListener("change", function() {
+
+        let email = this.value;
+        
+        console.log(email);
+         console.log( email.slice(0, indexof("@")));
+        console.log(email.slice(email.indexOf("@") + 1));
+        
+
+
+}) ;
+    </script>
+</body>
+</html>
