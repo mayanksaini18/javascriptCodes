@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="radio" name="gender" id="male" value="male">Male
+    <input type="radio" name="gender" id="female" value="female">Female
+    <button type="submit">submit</button>
+    <p id="msg"></p>
+   <script>
+    document.querySelector("button").addEventListener("click", function() {
+        const male = document.getElementById('male');
+        const female = document.getElementById('female')
+        const msg = document.getElementById('msg');
+
+        if(male.checked){
+            msg.textContent = "male selcted"
+        }
+        if (female.checked) {
+            msg.textContent = "female selected";
+        }
+    }) ;
+         
+   </script>
+</body>
+</html>
