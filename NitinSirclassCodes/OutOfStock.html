@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- to click n the checkbox th textCottent changes -->
+     <div class="container">
+        <input type="checkbox" id="toggleCheckbox">
+        <span id="textContent">Click the checkbox to change this text</span>
+
+     </div>
+     <script>
+        document.getElementById("toggleCheckbox").addEventListener("click", function() {
+            let textContent = document.getElementById("textContent");
+            if (this.checked) {
+                textContent.textContent = "Checkbox is checked!";
+            } else {
+                textContent.textContent = "Click the checkbox to change this text";
+            }
+        });
+     </script>
+</body>
+</html>
