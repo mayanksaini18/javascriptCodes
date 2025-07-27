@@ -1,4 +1,6 @@
-
+eventListner = listen for specifici events to creative web page interactive 
+events : click , mouseover , mouseout 
+.addEventListener(event,callback);
 
 1. click
 --------
