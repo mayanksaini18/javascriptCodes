@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container mt-5 ">
+         <h2 class="fw-bold">Verify Mobile</h2>
+         <div class="mt-4">
+      <label class="fw-semibold">Select Your Country</label>
+      <div class="flag-box">
+        
+        <img  src="" style="width: 50px; height: 30px; display: none;">
+      </div>
+
+      <select class="form-select mb-3">
+        <option selected value="default">Select Country</option>
+        <option value="in">India</option>
+        <option value="us">USA</option>
+        <option value="uk">UK</option>
+        
+      </select>
+    </div>  
+    <div class="mb-3">
+      <label class="fw-semibold">Your Mobile</label>
+      <input id="mobInp" type="text" class="form-control" placeholder="Enter mobile number">
+    </div>
+
+    <button id="VerifyBtn" class="btn btn-primary w-100">Verify</button>
+    <p id="msg"></p>
+
+    </div>
+
+    <script>
+        document.querySelector('select').addEventListener('change', function() {
+            const selectedCountry = this.value;
+            const flagBox = document.querySelector('.flag-box img');
+            var mobInp = document.getElementById('mobInp');
+            
+           flagBox.style.display = 'block'; // Show the image
+            switch (selectedCountry) {
+                case 'default': 
+                    flagBox.style.display = 'none'; // Hide the image
+                    break;
+                case 'in':
+                    flagBox.src = 'https://flagcdn.com/w320/in.png'; 
+                    mobInp.placeholder = '+91 and 10 digit number';
+
+                    break;
+                case 'us':
+                    flagBox.src = 'https://flagcdn.com/w320/us.png'; 
+                    mobInp.placeholder = '+1 and 10 digit number';
+                    break;
+                case 'uk':
+                    flagBox.src = 'https://flagcdn.com/w320/gb.png'; 
+                    mobInp.placeholder = '+44 and 10 digit number';
+                    break;
+                default:
+                    flagBox.src = '';
+            }
+        });
+
+        document.getElementById('VerifyBtn').addEventListener('click', function() {
+            const selectedCountry = document.querySelector('select').value;
+            const mobInp = document.getElementById('mobInp').value;
+            const msg = document.getElementById('msg');
+
+
+            switch(selectedCountry){
+                case 'in':
+                    if( mobInp.startsWith('+91')) {
+                        msg.textContent = 'Mobile number is valid for India';
+                        msg.style.color = 'green';
+                    } else {
+                        msg.textContent = 'Invalid mobile number for India';
+                        msg.style.color = 'red';
+                    }
+                    break;
+                case 'us':
+                    if( mobInp.startsWith('+1')) {
+                        msg.textContent = 'Mobile number is valid for USA';
+                        msg.style.color = 'green';
+                    } else {
+                        msg.textContent = 'Invalid mobile number for USA';
+                        msg.style.color = 'red';
+                    }
+
+                    break;
+                    case 'uk':
+                        if(mobInp.length === 10 && mobInp.startsWith('+44')) {
+                            msg.textContent = 'Mobile number is valid for UK';
+                            msg.style.color = 'green';
+                        } else {
+                            msg.textContent = 'Invalid mobile number for UK';
+                            msg.style.color = 'red';
+                        }
+                    case 'default':
+                        msg.textContent = 'Please select a valid country';
+                        msg.style.color = 'red';
+                        break;
+
+            }
+        });
+
+    </script>
+</body>
+</html>
