@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getDayName(dayNumber) {
+  switch(dayNumber) {
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuesday";
+    case 3:
+      return "Wednesday";
+    default:
+      return "Invalid Day";
+  }
+}
+console.log(getDayName(2)); 
+
+    </script>
+  </body>
+</html>
+
+<!-- 
+#### SWITCH SELCTOR 
+switch sii used to interrupt the flow of electron on circuit (for rlrctronic devices)
+
+- switch are clasified inti 
+-  a. toggle switch 
+- b. ush button switch 
+-  c. selector switch 
+-  d. joystich switch 
+
+
+
+var n = prompt("enter a number" "n = 1 to 3");
+switch(n){
+    case 1:
+        console.log("one");
+        break;
+    case 2:
+        console.log("two");
+        break;
+    case 3:
+        console.log("three");
+        break;
+    default:
+        console.log("not a valid number");
+
+
+        -it is using === strict equality operator to compare the value of n with the case values.
+}
+
+
+
+#rules of switch in js
+================================================================================================
+1. type must be exactly match ( it ussues === strict equality operator)
+   internally the data would be stored in key value pair fpr comparison {mapping }
+
+var n = '5'
+switch(n){
+    case 5:
+        console.log("five is a number");
+        break;
+    case '5':
+        console.log("five is a string");
+        break;
+    default:
+        console.log("default case");
+        break;
+}
+
+2. in mapp the value can be duplicated but the key must be unique
+
+var n = '5'
+switch(n){
+    case '5':
+    console.log("five is a string , first case");
+    break;
+    case '5':
+    console.log("five is a string , second case");
+    break;
+    default: .log("default case");
+    
+    break;
+}
+    - n is the key and the value is the string '5' 
+
+3. case label value can be any data type coz internally it is mapped as key value pair
+    
+  var n = '5'
+  switch(n){
+    case true:
+        console.log("true");
+        break;
+
+     case false:
+        console.log("false");
+        break;
+      default:
+        console.log("default case");
+        break;
+}
+
+4. even string type value can be supported for a key in switch case
+
+ var n = "hello"
+    switch(n){
+    case "hello":
+        console.log("hello");
+        break;
+    case "hello":
+        console.log("hello");
+        break;
+    default:
+        console.log("default case");
+        break;
+    }
+
+ 5. it is possible to write one block for multiple cases
+ var n = 2 
+    switch(n){
+      case 1 :
+      case2 :
+      case3:
+        console.log("one two three");
+        break;
+        case 10 :
+        console.log("ten");
+         break;
+        default:
+        console.log("default case");
+        break;
+    }
+
+  6. 
+
+  var n = NaN;
+    switch(n){
+     case null:
+        console.log("null");   null === null //true
+        break;
+    case undefined:
+        console.log("undefined");  undefined === undefined //true
+        break;
+    case NaN:       
+       console.log("NaN");    // NaN === NaN //false
+         break;
+}
+
+
+FAQ's
+================================================================================================
+1. can we define swictch without default case?  yes
+2. can we define default above or below the case? yes
+3. multiple default cases allowed? NO - it creates ambiguity
+3. can we use case without jump statement( break )? yes - 
+4. can we use retuen as a jump statemet? yes - it is used in function
+5 .
+6.
+7.
+8.
+
+var n = 18
+switch(true){
+  case (n >=15 && n <= 20):
+    console.log("n is between 15 and 20");
+    break;
+    default:
+    console.log("default case");
+    break;
+}
+
+
+
+    -->
