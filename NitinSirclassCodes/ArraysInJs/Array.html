@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script type="text/javascript">
+        let arr = [10,'sachin',true ,10.5]
+
+        for (const key in arr) {
+            console.log(`${key}  : ${typeof arr[key]} => ${arr[key]} :${typeof arr[key]}`);
+        }
+        console.log(arr);
+        console.log("the length the array : " + arr.length);
+        arr[4]=200;
+        console.log("the length of the array : " + arr.length);
+        
+        arr['sibling'] = 'arjun';
+        console.log(arr['sibling']);        
+        console.log(arr);
+        console.log("the length of the array : " + arr.length);
+
+        // arr['sibling'] = 'arjun'; it does not contribute in length of the array
+        
+
+        // arr[10]= 'mayank';
+        console.log("the length of the array : " + arr.length); //11
+         
+    </script> -->
+
+<!-- 
+    <script>
+        //  from javascriptp 6 version - we can collect multple value of aan araay in individual variables in clean and easy way  
+
+        function displayData(){
+            return [10, 'sachin', true, 10.5];
+        }
+
+        const [num, name, isTrue, decimal] = displayData();
+        console.log(num , name, isTrue, decimal);  
+       // console.log(num , name, isTrue, decimal,quantity);//  quantity is undefined 
+
+
+        // if value is  supplied  by the euser to the unpack variable , then it will filled with th emeanfull vvalue , otherwise it will be undefined
+
+        // case : oif we want to assign a value to the unpacked variable , then we can use the follonng syntax
+        const [num1, name1, isTrue1, decimal1, quantity = 100] = displayData();
+        console.log(num1 , name1, isTrue1, decimal1, quantity);   
+
+    </script> -->
+
+<!-- 
+    <script>
+        // rest operator in javascript
+        function displayData(...args){
+            console.log(args);
+            console.log(`the type of args is : ${typeof args}`);
+            console.log(userId , userName,...otherData);
+
+           
+        }
+
+   
+        displayData(10, 'sachin', true, 10.5);
+    </script> -->
+
+
+
+</body>
+</html>
+
+
+
+<!-- 
+Arrays in JavaScript
+
+- Non primitive  type
+-heaps memory
+-Range  and size is not fixed
+-Can store any type of data( homogeneous or heterogeneous)
+-Dynamic in nature
+- Can be resized dynamically(no contiguous memory allocation)
+-Index based ( type of index :number[need not be number also])
+
+Q how to create an array?
+A we can create an array in 2 ways 
+  a. static array
+     eg : let arr=[];
+          let arr = [10,'sachin',true ,10.5,100]
+
+    b. dynamic array
+        eg : let arr = new Array(2);
+            arr[0] ='sachin';
+            arr[1] = 10;
+
+
+
+
+Q what is the rest operator in javascript?
+A :  the rest operator is used to collect multiple values into an array. It is represented by three dots (...) before a avriable name. used in function parameters to collect all remaining arguments into an array. 
+-->
