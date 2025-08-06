@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    </div>
+    <h1>normal listing the elements</h1>
+    <div class="NormalListing">
+    </div>
+    <br>
+    <br>
+    <h1>Drop Down</h1>
+    <select name="" id="dropDown"></select>
+
+    <br> <br>
+    <h1>a links</h1>
+    <div class="aLinks">
+    </div>
+
+    <br>
+    <h1>table</h1>
+    
+
+    <script>
+     let container = document.querySelector('.container');
+     let arr =['home', 'school', 'college', 'office', 'market'];
+      arr.forEach((value, index) => {
+        let result = `${index} <input type="checkbox" />  <label> ${value}</label>  <button>delete</button> <br>`;
+        container.innerHTML += result;
+     });
+   
+    let normalListing = document.querySelector('.NormalListing');
+     arr.forEach((value, index) => {
+        let result2= `${index+1} ${value} <br>`;
+        normalListing.innerHTML += result2;
+        });
+
+  let dropDown = document.getElementById('dropDown');
+  arr.forEach((value) => {
+     let option = document.createElement('option');  
+       option.textContent = value;
+         dropDown.appendChild( option);
+  });
+
+    let aLinks = document.querySelector('.aLinks');
+     arr.forEach((value) => {
+        let a = document.createElement('a');
+        a.textContent = value;
+        a.href = `${value}.html`;
+        aLinks.appendChild(a);
+        aLinks.innerHTML += ' <br> '; 
+     });
+
+   
+
+    
+   
+    </script>
+</body>
+</html>
