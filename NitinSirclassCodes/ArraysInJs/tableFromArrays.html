@@ -10,6 +10,34 @@
 
     <script>
         let arr = ['home', 'school', 'college', 'office', 'market'];
+        let body = document.querySelector('body');
+        let table = document.createElement('table');
+        table.style.border = '1px solid black';
+        body.appendChild(table);
+        let thead = document.createElement('thead');
+        let tbody = document.createElement('tbody');
+        let tr = document.createElement('tr');
+       let td = document.createElement('td');
+        td.textContent = 'category';
+      
+        tr.appendChild(td);
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        arr.forEach((value) => {
+            let tr = document.createElement('tr');
+            let td = document.createElement('td');
+            td.textContent = value;
+            td.style.border = '1px solid black';
+            tr.appendChild(td);
+            tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+
+
+
+
+
     </script>
 </body>
 </html>
