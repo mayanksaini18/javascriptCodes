@@ -49,9 +49,49 @@
         });
         table.appendChild(tbody);
 
+    </script>
+    <script>
+        
+         let data = [10,5,2];
+         data.sort(function(a, b){
+           return a - b ;
+         })
+            console.log(data);
 
+            let users = [
+                {name: 'John', age: 30},
+                {name: 'Jane', age: 25},
+                {name: 'Doe', age: 35}
+            ];
+            users.sort(function(a, b){
+                return b.age - a.age;
+            });
+            console.log(users);
+         
+    </script>
+    <script>
+        let arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let result2 = arr2.filter((number) => {
+            return number %2 ===0 ;
+        });
+        console.log(result2);
+        
+        let mixed = [0, "hello", "", null, 42, undefined, false];
+        let output = mixed.filter(Boolean);
+        console.log(output);
 
+        let cart = [
+            { id: 1, name: 'Laptop', price: 50000, available: true },
+            { id: 2, name: 'Mouse', price: 500, available: false },
+            { id: 3, name: 'Keyboard', price: 1000, available: true },
+            { id: 4, name: 'Monitor', price: 8000, available: false },
+            { id: 5, name: 'USB Cable', price: 200, available: true }
+        ];
 
+        let availableItems = cart.filter(function (product) {
+            return product.available === true;
+        });
+        console.log(availableItems);
 
     </script>
 </body>
