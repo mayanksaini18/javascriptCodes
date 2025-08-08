@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+</head>
+<body>
+    <h1>
+        Array Manipulation
+    </h1>
+    <label for="">Add City</label>
+    <br>
+    <input type="text" id="cityInput" placeholder="Enter city">
+    <button id="addCityButton">Add City</button>
+    <br>
+    <br>
+    <label for="">Select City</label>
+    <br>
+    <button>
+        <i class="bi-sort-alpha-down asce"></i>
+    </button>
+    <button>
+        <i class="bi-sort-alpha-up desc"></i>
+    </button>
+    <ul>
+        <!-- appends childs -->
+    </ul>
+
+    <button>
+        <i class="bi-trash"></i>
+        Delete
+    </button>
+
+
+    <script>
+        document.getElementById('addCityButton').addEventListener('click', function() {
+            let cityInput = document.getElementById('cityInput');
+            let city = cityInput.value.trim();
+            if (city) {
+                let ul = document.querySelector('ul');
+                let li = document.createElement('li');
+                li.textContent = city;
+                ul.appendChild(li);
+                cityInput.value = ''; // Clear input field
+            } else {
+                alert('Please enter a city name.');
+            }
+        });
+            document.querySelector('.asce').addEventListener('click', function() {
+
+             });
+        document.querySelector('.desc').addEventListener('click', function() { 
+
+        });
+            document.querySelector('.bi-trash').addEventListener('click', function() {
+                let ul = document.querySelector('ul');
+                ul.innerHTML = ''; // Clear all list items
+            });
+
+
+    </script>
+</body>
+</html>
