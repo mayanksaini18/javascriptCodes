@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body class="p-3">
+   
+    <table id="table" class="table table-bordered">
+        <thead class="">
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Image</th>
+                <th>Product Rating</th>
+            </tr>
+        </thead>
+        <tbody id="Tbody"></tbody>
+    </table>
+
+    <hr>
+    <h3>Design products using cards</h3>
+    <div class="container">
+        <div class="row" id="productCards"></div>
+    </div>
+
+    <script>
+        const URL ="https://fakestoreapi.com/products/category/jewelery";
+        
+        fetch(URL)
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.getElementById("Tbody");
+            const cardContainer = document.getElementById("productCards");
+
+            // Table rows
+            data.forEach(product => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.title}</td>
+                    <td><img src="${product.image}" alt="img"></td>
+                    <td>${product.rating.rate}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Cards
+            data.forEach(product => {
+                cardContainer.innerHTML += `
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <img src="${product.image}" class="card-img-top" alt="Product" style="height:200px;">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.title}</h5>
+                                <p class="card-text">${product.description}</p>
+                                <p ><strong>Rating:</strong> ${product.rating.rate} </p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        })
+        .catch(error => console.log(error));
+    </script>
+</body>
+</html>
