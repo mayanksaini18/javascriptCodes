@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        console.log("waiter took the order");
+        let promise = new Promise(function(resolve, reject) {
+           
+            let isfood = true;
+            setTimeout(() => {
+                if (isfood) {
+                    resolve("Food is ready!");
+                } else {
+                    reject("food is not available");
+                }
+            }, 2000);
+
+        });
+        promise
+            .then(function(success) {
+                console.log(success);
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+
+            console.log("waiter is serving water");
+    </script> -->
+// modern way to write promises
+    <script type="text/javascript">
+      
+
+         // This function simulates preparing food and returns a promise.
+         function prepareFood(){
+            return new Promise((resolve, reject) => {
+                let isFoodReady = true;
+                setTimeout(() => {
+                    if (isFoodReady) {
+                        resolve("Food is ready!");
+                    } else {
+                        reject("Sorry, the food is not available.");
+                    }
+                }, 2000);
+            });
+         }
+
+        // This async function handles the order process.
+        async function handleOrder() {
+            console.log("Waiter took the order.");
+            try {
+                // It 'awaits' the result from the promise-returning function.
+                let result = await prepareFood();
+                console.log(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        handleOrder();
+        console.log("Waiter is serving water while the food is being prepared...");
+    </script>
+</body>
+</html>
+
+
+<!--  
+
+
+// Q what uus promises in javascript?
+// A promises is a pplaceholder for a value that will arrive in future 
+// (usally ) after an async operation [Api call , timer , file read] is completed
+
+// A promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+//   remember : "t prmise to give ypu the result later - either success or failure"
+
+//   syntax:
+//    let promise = new Promise(function(resolve, reject) {
+//        // async operation
+//        if (success) {
+//            resolve(result); // call resolve with the result
+//        } else {
+//            reject(error); // call reject with the error
+//        }
+//    });
+
+
+//    resolve() : when aynsc operation is successful
+//    reject() : when async operation fails
+
+//    // handling promises
+//    promise
+//    .then(function(success){
+//       //  to handle success
+//    });
+//       .catch(function(error){
+//       // to handle error
+//       });
+
+
+asynch and await
+ async/ await is a syntax sugar over promises .
+ it makes aasynchhronous code look like synchronous code , so it is easier to read and write
+
+ sybax :
+ function somePromiseFunction() {
+    return new Promise((resolve, reject) => {
+        // async operation
+        if (success) {
+            resolve(result);
+        } else {
+            reject(error);
+        }
+    });
+}
+    async function main() {
+    try{
+        let result = await somePromiseFunction();
+        console.log(result);
+    }catch(error) {
+        console.error(error);
+    }
+-->
