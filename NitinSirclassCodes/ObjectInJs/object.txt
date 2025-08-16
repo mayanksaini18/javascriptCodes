@@ -1,0 +1,287 @@
+JavaScript Object type
+----------------------
+Object is set of properties and functions.
+  - Object is to store all related data and logic together. 
+  - "Alan Kay" introduced the concept of Object into computer programming in early 1960's .
+  - John Olay and Nygaard developed object oriented programming in early 1967.
+  - It was formulated with a language "SIMULA".
+
+Syntax:
+let tv = { }
+- Data and logic is stored in object in the form of "Key - Value" collection.
+Syntax:
+let tv = {
+		Key : value,
+		Key : value
+	}
+
+- All keys are "string" type.
+- Value can any type, Primitive or Non-primitive.
+- If object comprises of only data and no logic then it is referred as "JSON".
+	[JavaScript Object Notation]
+
+
+Syntax
+	product.key  | product["key"]    ====> "dot is refered as member invoking operator"
+
+When to use obj.key operator and when to use obj['key']?
+
+
+using obj[key]
+==============
+If the key is a variable or a computed value.
+If the key is invalid as an identifier.
+	const weirdObj = { "first-name": "sachin", "123": "number" };
+	console.log(weirdObj["first-name"]); // "sachin"
+	console.log(weirdObj["123"]);        // "number"
+
+using obj.key
+============
+You know the key ahead of time and it is a valid identifier (i.e., no spaces, no special characters,
+		doesn't start with a number).
+  const person = { name: "sachin", age: 51 };
+  console.log(person.name); // "sachin"
+
+
+eg#1.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var tv = {
+            "Name": "Samsung Tv",
+            "Price": 4500.0,
+            "Cities": ["Bengaluru", "Hyderabad", "Kerala"],
+            "Ratings": {
+                "rate": 3.5,
+                "count": 3000
+            },
+            "123": "PinCode"
+        }
+        console.log("TvName is : ", tv.Name);
+        console.log("Price is : ", tv['Price']);
+        console.log("Cities is : ", tv['Cities']);
+        console.log("Ratings is : ", tv.Ratings.rate);
+        console.log("Ratings is : ", tv['Ratings']['rate']);
+        console.log("PinCode Number is ", tv['123']);
+
+    </script>
+</body>
+
+</html>
+
+
+Synchronous and Asynchronous operations in javascript
+=====================================================
+  
+Synchronous : JavaScript is single-threaded — it can run only one task at a time in the main thread (the Call Stack).
+	       If we block it with a slow task (like file loading, network request, etc.), it halts everything else 
+		 — UI freezes, user waits, nothing can move forward.
+
+
+Real-Life Analogy: Restaurant
+
+Imagine this:	
+Step					 Sync Way (Bad)					 Async Way (Good)
+1. Customer orders		Waiter stands at kitchen until food ready	Waiter gives order to cook & goes to next
+2. Other customers		Must wait in line (blocked)			Handled while first dish is cooking
+3. Result			Long wait, poor service				Fast, efficient, better customer experience
+
+Conclusion: You don’t wait for one thing to finish before doing the next.
+
+Async means:
+   “Don’t wait for this task to finish—go ahead and do the next thing.”
+
+javascript components used during asynchronous operation
+========================================================
+  a. Callstack
+  b. webapi | browser api [setTimeout() | fetch() | DomEvents ,....]
+  c. Callback Queue [ Task Queue | Message Queue]
+  d. EventLoop
+  e. MicroTask Queue
+
+
+Flow of execution
+=================
+  a. CallStack 		: main thread would run here [line by line ] 
+  b. WebAPI    		: External features provided by the browser[ setTimeOut() | fetch() ]
+  c. Callback Queue	: Once asynch task is done , the associated callback is moved into this queue
+			  once the code moves into this quee, the code won't run immediately, it has to go to CallStack and it would
+			  go only when the CallStack is empty.
+  d. Event Loop 	: Traffic cop [Check wheter the callStack is empty, if yes push callBack logic to callSTack otherwise wait]
+  e. MicroTaskQueue     : It holds promises(.then(), .catch())
+
+eg#1.
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        console.log("Customer orders food");
+
+        function cookSynch() {
+            console.log("🧑‍🍳 Chef starts cooking(synch)");
+            for (let i = 0; i < 3; i++) {
+                console.log(`🍽️ Cooking dish : ${i + 1}`);
+            }
+            console.log("All dish served (synch) ");
+        }
+
+        function cookAsynch() {
+            console.log("🧑‍🍳 Chef starts cooking(Asynch)");
+
+            setTimeout(() => {
+                console.log("🍽 Dish 1 served (after 2 sec)");
+            }, 2000);
+
+            setTimeout(() => {
+                console.log("🍽 Dish 2 served (after 1 sec)");
+            }, 1000);
+
+            console.log("Chef continues other work...");
+        }
+
+        cookSynch();
+        console.log("Waiter handles the Billing");
+
+        console.log("********************************************");
+
+        cookAsynch();
+        console.log("Waiter handles the Billing");
+
+
+    </script>
+</body>
+
+</html>
+
+Output
+Customer orders food
+ 🧑‍🍳 Chef starts cooking(synch)
+ 🍽️ Cooking dish : 1
+ 🍽️ Cooking dish : 2
+ 🍽️ Cooking dish : 3
+ All dish served (synch) 
+ Waiter handles the Billing
+********************************************
+ 🧑‍🍳 Chef starts cooking(Asynch)
+ Chef continues other work...
+ Waiter handles the Billing
+ 🍽 Dish 2 served (after 1 sec)
+ 🍽 Dish 1 served (after 2 sec)
+
+
+
+
+ Q what is set time out ?
+ setTimeOut() is a Web API function that lets you dealy the execution of a peice of code by a given time (in milliseconds).
+
+ setTimeOut(callbackfunction , dealyInMilliseconds , args1,args2,...);
+   eg:#01
+  <script>
+        console.log("starting the code");
+        setTimeout(() => {
+            console.log("after 2 seconds");
+        }, 2000);
+        console.log("ending the code");
+    </script>
+
+
+    eg:#02
+
+     <script>
+       setTimeout(function() {
+            console.log(`Hello ${name}`);
+        }, 1000 , mayank);
+
+        
+    </script>
+
+
+    FAQ's
+    1. How to read all keys from object?
+    A.  const obj = { name: "Mayank", age: 20, city: "Bangalore" };
+
+        const keys = Object.keys(obj);
+        console.log(keys); // ["name", "age", "city"]
+
+     
+    2.how to know the datatype of value in a key?
+    A. console.log(typeof obj.name); // "string"
+       console.log(typeof obj.age);  // "number"
+
+    3.how to get the count of keys in an object?
+     console.log(Object.keys(obj).length); // 3
+
+    4.how to read both key and valuea in an object?
+    A. Object.entries(obj).forEach(([key, value]) => {
+    console.log(key, value);
+    });
+
+    5. how to remove a key dynamically 
+      delete obj.city;
+      console.log(obj); // { name: "Mayank", age: 20 }
+
+    6. how to check the availability of a key in an object?
+    A. console.log("name" in obj); // true
+       console.log("city" in obj); // false
+
+
+
+Object with functions
+ a. An object can keep all related data and functions together
+ b. Functionality defines the actions of objects.
+ c. In javascript functionality is defined using "functions"
+ d. A function can be a void function or a function with return type
+   
+Syntax: 
+    var object = {
+			Key : value;
+			key : function(){}		==> function with void
+			key : function(){
+					return value;   ==> function with return type
+				}
+		 };
+
+
+eg#1.
+<script type="text/javascript">
+    var product = {
+        "Name": "NikeCasuals",
+        "Qty": 2,
+        "Price": 3500.53,
+
+        "Total": function () {
+            return this.Price * this.Qty;
+        }
+    }
+
+    product.Qty = parseInt(prompt("Enter the qty: "))
+    product.Price = parseFloat(prompt("Enter the Price: "))
+    document.write(`
+    Name : ${product.Name} <br>
+    QTY : ${product.Qty} <br>
+    Price : ${product.Price} <br>
+    Total : ${product.Total().toLocaleString("en-in", { style: "currency", currency: "INR" })}
+    `)
+
+</script>
+
+
+
+
+
+
