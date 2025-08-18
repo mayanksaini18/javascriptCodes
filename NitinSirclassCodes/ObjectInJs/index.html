@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Design</title>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+
+    <script type="text/javascript">
+        function bodyLoad() {
+             //call api
+             const URL = "https://fakestoreapi.com/products/category/jewelery";
+
+            fetch(URL).then(function (response){
+                return response.json();
+            }).then(function (products){
+                products.map(function(product){
+
+                    var divCard = document.createElement("div");
+
+                    divCard.className = "card m-2 p-2";
+                    divCard.style.width = "300px";
+
+                    divCard.innerHTML = `
+                        <img src="${product.image}" class="card-img-top" alt="cannot display" height="150">
+
+                        <div class="card-header">
+                                <p class="card-title text-center">${product.title}</p>
+                                
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                    ${product.description}
+                            </p>
+                        </div>
+
+                        <div class="card-footer">
+                                <dl class ="row">
+                                    <dt class="col">Rating </dt>
+                                    <dd class="col">
+                                        ${product.rating.rate}
+                                    </dd>
+                                </dl>
+                        </div>
+                    `;
+
+                    document.querySelector("main").appendChild(divCard);
+                   
+                })
+            })
+        }
+    </script>
+
+</head>
+<body class="container-fluid" onload="bodyLoad()">
+    <main class="d-flex flex-row flex-wrap mt-3">
+
+    </main>
+</body>
+</html>
