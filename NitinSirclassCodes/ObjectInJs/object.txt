@@ -282,6 +282,67 @@ eg#1.
 
 
 
+what the issue with thw object type?
+ 1. key of object is string type
+  2. there is not size of keys , you can't get the count of keuys by usung any inplicit technique
+  3. you need various explicit interaors
+  4.
+  5.
+
+  Map 
+  ======================================
+  map is similar to object  but it comes with implicit properties and methods for manipulation , it is faster in access  , and it is schemaless [structure less]. 
+
+ Syntax :
+ var refName = new map();
+ =map provides following methods for manipulating 
+ set() - 
+ get()-
+==============================================================================================
+key()
+values()
+entries()
 
 
 
+
+
+Symbol type in Js 
+==================================================================
+Q what is symbol in js ?
+ans : It is a primitive datatype introduced in ES6.
+     - A symbol value is created by calling the `Symbol()` function, which returns a unique value every time.
+     - It is used for creating unique identifiers for object properties.
+     - It helps in creating "hidden" properties for an object, which are ignored by common iteration methods like `for...in` loops or `Object.keys()`.
+
+Syntax:
+let sym1 = Symbol();
+let sym2 = Symbol("description"); // Optional description for debugging
+
+Key Characteristics:
+1.  **Uniqueness:** Every symbol value returned from `Symbol()` is unique.
+    `Symbol("id") === Symbol("id")` is `false`.
+
+2.  **Hidden Properties:** When used as a key in an object, a symbol property is not included in `for...in` loops or `Object.keys()`. This prevents accidental modification and name clashes.
+
+3.  **Retrieving Symbol Properties:** You can access symbol properties using `Object.getOwnPropertySymbols()` or `Reflect.ownKeys()`.
+
+4.  **Well-known Symbols:** JavaScript has built-in symbols that represent internal language behaviors. For example, `Symbol.iterator` allows an object to be iterable.
+
+
+
+even if we keep same keys two differnet object it will be crated for the symol type
+
+
+DATE()
+===============================
+
+date type is defined by using Js "Date()" constructor 
+it aallocated memory for storing date type value /
+date type is stored 
+
+
+
+
+timerEvents
+======================
