@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let map = new Map();
+
+       map.set("name", "Mayank");
+       map.set(19, "Age");
+
+       console.log(map.get("name"));
+       console.log(map.get(19));
+       
+       console.log(map.size);
+
+      map.delete(19);
+     console.log(map.has(19)); // false
+   
+     map.clear();
+console.log(map.size); // 0
+
+
+// for (let key of map.keys()) {
+    //   console.log(key);
+    // }
+    
+    console.log("map2")
+
+ let map2 = new Map([
+          ["name", "Mayank"],
+          ["age", 19],
+          ["city", "Bangalore"]
+ ]);
+
+  console.log(map2.get("name"));
+  console.log(map2.get("age"));
+  console.log(map2)
+ 
+  for (let [key, value] of map2) {
+  console.log(key, ":", value);
+}
+
+
+
+
+
+
+    </script>
+</body>
+</html>
