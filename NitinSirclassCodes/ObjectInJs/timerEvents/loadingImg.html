@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div class="container">
+     <button>Load Image</button>
+    <br>
+    <progress></progress>
+    <span id="percentage"></span>
+    <br>
+    <img src="../../img/image copy 2.png" alt="">
+   </div>
+
+   <script>
+         let button = document.querySelector("button");
+         let progress = document.querySelector("progress");
+         let img = document.querySelector("img");
+         let percentage = document.getElementById("percentage");
+            img.style.display = "none"; 
+            progress.style.display = "none";
+            progress.value = 0;
+            progress.max = 100;
+
+    
+            button.addEventListener("click", function() {
+                progress.style.display = "block";
+                progress.value = 0;
+               
+                let interval = setInterval(function() {
+                    if (progress.value < 100) {
+                        progress.value += 10;
+                        percentage.innerText = progress.value + "%";
+                    } else {
+                        clearInterval(interval);
+                        img.style.display = "block";
+                        progress.style.display = "none"; 
+                        percentage.innerText = "";
+                       button.style.display = "none";
+                    }
+                }, 1000);
+            });
+    </script>
+</body>
+</html>
