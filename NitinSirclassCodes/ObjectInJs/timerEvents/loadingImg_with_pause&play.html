@@ -11,8 +11,13 @@
      <button>Load Image</button>
     <br>
     <progress></progress>
-    <button id="pause"><i class="bi bi-pause-circle"></i></button>
-  <button id="play"><i class="bi bi-play-circle"></i></button>
+   <button id="pause" class="btn btn-outline-danger me-2">
+    <i class="bi bi-pause-circle"></i> Pause
+  </button>
+
+  <button id="play" class="btn btn-outline-success">
+    <i class="bi bi-play-circle"></i> Play
+  </button>
     <span id="percentage"></span>
     <br>
     <img src="../../img/image copy 2.png" alt="">
@@ -35,6 +40,7 @@
             let interval;
 
             function startProgress(){
+              
                  progress.style.display = "block";
               
                  interval = setInterval(function() {
