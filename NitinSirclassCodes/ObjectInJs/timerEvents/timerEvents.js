@@ -32,3 +32,9 @@ let intervalId = setInterval(() => {
 
 
 // clearInterval(id) → stops it.
+
+// let Id = setInterval(function , delay , param1, param2, ...)
+// setInterval is useful for tasks that need to be repeated at regular intervals, like updating a clock or fetching data periodically.
+// function : the function to execute
+// delay : the time in milliseconds between each execution
+// param1,param2... : the function can take parameters
