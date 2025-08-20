@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+   <div class="container">
+     <button>Load Image</button>
+    <br>
+    <progress></progress>
+    <button id="pause"><i class="bi bi-pause-circle"></i></button>
+  <button id="play"><i class="bi bi-play-circle"></i></button>
+    <span id="percentage"></span>
+    <br>
+    <img src="../../img/image copy 2.png" alt="">
+   </div>
+
+   <script>
+         let button = document.querySelector("button");
+         let pauseButton = document.getElementById("pause");
+         let playButton = document.getElementById("play");
+         let progress = document.querySelector("progress");
+         let img = document.querySelector("img");
+         let percentage = document.getElementById("percentage");
+           pauseButton.style.display = "none";
+              playButton.style.display = "none";
+            img.style.display = "none"; 
+            progress.style.display = "none";
+            progress.value = 0;
+            progress.max = 100;
+
+            let interval;
+
+            function startProgress(){
+                 progress.style.display = "block";
+              
+                 interval = setInterval(function() {
+                    if (progress.value < 100) {
+                        pauseButton.style.display = "inline";
+                        playButton.style.display = "inline";
+                        progress.value += 10;
+                        percentage.innerText = progress.value + "%";
+                    } else {
+                        clearInterval(interval);
+                        interval = null;
+                        img.style.display = "block";
+                        progress.style.display = "none"; 
+                        percentage.innerText = "";
+                       button.style.display = "none";
+                    }
+                }, 1000);
+            }
+            button.addEventListener("click", function() {
+                startProgress();
+                
+            });
+
+            pauseButton.addEventListener("click", function() {
+               if (interval) {
+                    clearInterval(interval);
+                    interval = null;
+               }
+                    
+              
+            });
+            playButton.addEventListener("click", function() {
+               startProgress();
+            })
+    </script>
+</body>
+</html>
