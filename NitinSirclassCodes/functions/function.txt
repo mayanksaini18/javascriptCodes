@@ -1,0 +1,15 @@
+A function is a block of code that performs a specific task and can be reused.
+
+Syntax:
+function functionName(parameters) {
+    // code to be executed
+    return value;  // optional
+}
+
+JavaScript functions
+ -> function Declarartion
+ -> function Definition 
+ -> function Expression  
+  - > function parameters
+
+  
