@@ -1,0 +1,171 @@
+1. What is Error Handling?
+
+Error handling means detecting and managing errors in a program so it doesn’t crash unexpectedly.
+	In JavaScript : try-catch-finally, throw, and Error objects.
+
+Purpose: Prevent the program from terminating abruptly and provide meaningful messages or recovery.
+
+2. Need of Error Handling
+
+Without error handling:
+=> The program stops execution at the error line.
+=> User experience is bad (program just crashes).
+=> Debugging becomes difficult.
+
+With error handling:
+=> Program continues smoothly.
+=> We can provide fallbacks or user-friendly messages.
+=> Easy debugging using stack trace.
+
+(a) Syntax Error
+
+Caused by writing code incorrectly.
+
+In JS, it’s detected when parsing (before execution starts).
+JavaScript does not even start execution if there’s a syntax error.
+
+eg#1.
+   let class=12;
+   console.log(class);
+
+eg#2.
+  console.log("Execution started ;
+
+
+(b)Runtime Error
+
+Errors occurring while executing the program.
+
+JS: throws an Error object.
+
+let a = 10, b = 0;
+console.log(a / b); // Infinity (JavaScript doesn’t crash, but still runtime issue)
+console.log(unknownVar); // ReferenceError: unknownVar is not defined
+
+(c) Logical Error
+
+Program runs without crashing but gives wrong results.
+
+ In JS, compiler/interpreter won’t detect these.
+
+let marks = 85;
+if (marks > 90) {
+    console.log("Grade A");
+} else {
+    console.log("Grade F"); // Wrong logic
+}
+
+
+Note:
+In JavaScript, every error is derived from the Error object.
+
+Built-in error types in JavaScript:
+
+Error (generic)
+
+ReferenceError
+
+TypeError
+
+SyntaxError
+
+RangeError
+
+EvalError
+
+URIError
+
+
+eg#1.
+try {
+    let num = 10;
+    num.toUpperCase(); // TypeError
+} catch (err) {
+    console.log(err.name);  // "TypeError"
+    console.log(err.message); // "num.toUpperCase is not a function"
+}
+
+class MyCustomError extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "MyCustomError";
+    }
+}
+
+function checkAge(age) {
+    if (age < 18) {
+        throw new MyCustomError("Age must be 18+");
+    }
+    console.log("Valid age");
+}
+
+try {
+    checkAge(15);
+} catch (err) {
+    console.log(err.name);    // "MyCustomError"
+    console.log(err.message); // "Age must be 18+"
+}
+
+Difference b/w return and throw?
+  return : It would just send the control back to the caller [even if the problem occured]
+  throw  : It would send the control back to the caller along with the Exception|Error Object.
+
+
+
+Concept				JavaScript
+============================================
+Syntax Error			Parsing stage
+Runtime Error			Error object (e.g., ReferenceError)
+Logical Error			Wrong output
+Error Object			Error, ReferenceError, TypeError...
+Custom Error			Extend Error class
+Handling Mechanism		try-catch-finally
+
+finally in JavaScript
+=====================
+
+Works almost the same → always runs, whether an error occurs or not.
+
+Exception: if you explicitly terminate the process (like process.exit() in Node.js), then it won’t execute.
+
+eg#1.
+try {
+    let a = 10 / 0; 
+    console.log(a); // Infinity (not an error in JS)
+    unknownVar;     // ReferenceError
+} catch (err) {
+    console.log("Exception caught:", err.message);
+} finally {
+    console.log("Finally block executed");
+}
+
+
+eg#2.
+Subtle Difference: return inside try/catch
+
+In JavaScript, if you put return inside try or catch, the finally block still executes before returning.
+
+function demo() {
+    try {
+        return 1;
+    } catch (err) {
+        return 2;
+    } finally {
+        console.log("Finally always executes");
+    }
+}
+
+console.log(demo()); 
+
+Note: To skip finally block we need to kill the process 
+		JSEngine : node.js environment we can kill
+		JVM      : System.exit(0);
+
+Note: 
+RangeError = when a value is valid type but not valid range.
+
+Common causes in JavaScript:
+	a. Invalid array length (new Array(-1))
+	b. Invalid numeric argument (num.toFixed(200))
+	c. Too much recursion (stack overflow)
+
