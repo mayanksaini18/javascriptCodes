@@ -1,0 +1,96 @@
+JavaScript Functions - Class Notes (28-08-2025)
+=================================================
+
+1. What is a Function?
+----------------------
+- A block of code that performs a specific task.
+- Executes when it is called.
+- Stored in the Stack Area.
+
+Syntax:
+function name_of_function(parameters) {
+   // body of the function
+}
+
+-------------------------------------------------
+
+2. Types of Functions
+---------------------
+
+a) Function Declaration
+- Defined once, memory allocated is the same across requests.
+
+Example:
+function Print(msg) {
+    console.log(msg);
+}
+Print("Hello");  // calling
+
+Parts of a function:
+- Declaration: function Print(msg)
+- Signature:   Print(msg)
+- Definition:  { ... }
+
+b) Function Expression
+- Function stored inside a variable.
+- Memory can change depending on state/situation.
+
+Example:
+var msg = function(name) {
+    if(name === 'sachin'){
+        console.log("Hello");
+    } else {
+        console.log("Byee");
+    }
+}
+msg("sachin");
+
+Can also be used inside arrays or assigned dynamically.
+
+-------------------------------------------------
+
+3. Anonymous Functions
+----------------------
+- Functions without a name.
+- Used with IIFE (Immediately Invoked Function Expression).
+
+Example:
+(function() {
+    document.write("Hello User");
+})();
+
+- Commonly used in callbacks:
+fetch(URL).then(function(){});
+array.map(function(){});
+
+-------------------------------------------------
+
+4. Function Parameters
+----------------------
+- Parameters = placeholders in definition (formal).
+- Arguments = actual values passed when called.
+
+Example:
+function Print(msg) {   // msg = parameter
+    console.log(msg);
+}
+Print("welcome");       // "welcome" = argument
+
+- Functions can take other functions as parameters (callbacks).
+
+Example:
+function execute(fn) {
+    fn();
+}
+execute(function(){
+    console.log("This is a callback function!");
+});
+
+-------------------------------------------------
+
+Summary
+-------
+- Function Declaration â Same memory across calls.
+- Function Expression â Dynamic memory allocation.
+- Anonymous Functions â Useful in IIFE & callbacks.
+- Parameters/Arguments â Customize function behavior.
