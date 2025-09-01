@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<!--  firstClass Function
+  
+in js , functions are treated as first class citizens ( like object in Java)
+  
+  means
+  you can store function in variable
+  pass them as argument to other function
+  return them from other function
+
+  in java , methods are not treated as first class citizens , but Java 8  has introduced lambda expressions to support functional programming
+  In js ,  all functions are first class citizens by default
+
+  // asigning function to variable
+   const greet = function( name) {
+    return "Hello" + name;
+    }
+    console.log(greet("Nitin"));
+
+    // passing function as argument
+   function execute (fn, value){
+   fn(value)
+   }
+    execute(greet, "Nitin");
+
+    // returning function from another function
+      function multiplier(factor) {
+        return function(x) {
+          return x * factor;    // becoz of closure inner function can access outer function variable {laxical scope}
+        };
+      }
+        const double = multiplier(2);
+        console.log(double(5)); // Output: 10
+
+
+     // closures :
+      A closure is a function that has access to its own scope, the outer function's scope, and the global scope, even after the outer function has returned.  
+
+      // IIFE ; Immediately Invoked Function Expression
+
+
+        (function(){
+            console.log("IIFE")
+        })
+        ();
+
+        // assigning IIFE with parameter
+        (function(name){
+            console.log("HELLO" + name)
+        })
+        ("Nitin");
+
+        //assigning IIFE  result to variable
+        const result = (function(name){
+            return "HELLO" + name
+        })
+        ("Nitin");
+        console.log(result);
+====================================================================================================================================
+pure Functions :
+A pure function is a function that, given the same input, will always return the same output and does not have any side effects (does not modify any external state or variable).
+Example of a pure function:
+ function add(a, b) {
+    return a + b;
+  }
+  
+  console.log(add(2, 3)); // Output: 5
+  console.log(add(2, 3)); // Output: 5 (same input, same output)
+  
+impure functions:
+an impure function is a function that may produce different outputs for the same input or has side effects (modifies external state or variable).  
+Example of an impure function:
+let counter = 0;
+function increment() {
+    counter++;
+    return counter;
+  }
+  
+  console.log(increment()); // Output: 1
+  console.log(increment()); // Output: 2 (same input, different output due to side effect)
+====================================================================================================================================
+
+callback function :
+A callback function is a function that is passed as an argument to another function and is executed after some operation or event occurs.
+In java , it 's is like passing an interface implementation or lamda 
+
+// simple callback
+ function greet(name, callback) {
+    console.log("Hello " + name);
+    callback();
+  }
+  
+  function sayGoodbye() {
+    console.log("Goodbye!");
+  }
+  
+  greet("Nitin", sayGoodbye);
+
+====================================================================================================================================
+higher order function :  
+A higher-order function is a function that either takes one or more functions as arguments or returns a function as its result.
+
+//example 
+ Map , filter , reduce are higher order functions:
+
+ const numbers = [1, 2, 3, 4, 5];
+  const callback=function(num) {
+    return num * 2;
+  };
+    const doubled = numbers.map(callback);                   | numbers.map(num => num * 2);
+    console.log(doubled); // Output: [2, 4, 6, 8, 10]
+
+// filter
+    const evenNumbers = numbers.filter(function(num) {       | numbers.filter(num => num % 2 === 0);
+    return num % 2 === 0;
+  });
+    console.log(evenNumbers); // Output: [2, 4]
+
+    // higher order funtion
+     function power(exponent) {
+        return function(base) {
+          return base ** exponent;
+        };
+      }
+        const square = power(2);
+        console.log(square(5)); // Output: 25
+    
+====================================================================================================================================
+  lambda function :
+   
+  rules :
+    1. no need to write function keyword
+    2. if only one parameter no need to write parenthesis ()
+    3. if only one line of code no need to write curly braces and return keyword
+    4. if no parameter , use empty parenthesis ()
+    5. in case of arrow function, function keyword is optional , where parameters and body of  a function is binded with "=>"
+    6. arrow function does not have its own "this" , it takes "this" from surrounding context
+
+====================================================================================================================================
+Genereator  function :
+A generator function is a special type of function that can be paused and resumed, allowing it to produce a sequence of values over time, rather than computing them all at once and sending them back.
+ It is defined using the function* syntax and uses the yield keyword to produce values.
+ 
+Example of a generator function:
+ function* numberGenerator() {
+    yield 1;
+    yield 2;
+    yield 3
+-->
