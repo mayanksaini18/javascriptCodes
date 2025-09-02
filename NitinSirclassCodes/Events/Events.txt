@@ -1,0 +1,72 @@
+<!-- Q what is Events Handler in JavaScript? what is Event?
+A : onclick => Event?
+    onclick =>Insert
+
+
+=================================================================
+Event Arguments
+-it comprises of defafault and custoom Arguments
+-every event handler have 2 default argumnents
+   a this
+   b event    
+ <button  id="" name="" class="" onclick="fun1(this,event)">Click</button>  
+ this => send info about current HTML element 
+    event => send info about current event
+
+   sybntx: function fun1(this,event){
+   
+   }
+
+
+   script>
+    function findPos(obj,e){
+     console.log(obj);
+        console.log(e);
+        document.write(`
+
+        `)
+    }
+   
+   
+   ==========================================================================================
+   Browser Event
+   all javascript events are related to browser events
+   Browser events be can configured to any element in a page
+   Browser events are classified into vraious categories
+    1) Mouse Events
+    2) Keyboard Events
+    Button Events
+    Timer Events
+    touch Events
+    Form Events
+    Clipboard Events
+    
+ Mouse Events
+ ============================
+ 1) onmouseover
+ 2) onmouseout   
+3) onmousedown
+4) onmouseup
+5)onmousemove
+
+
+keyBoard Events
+============================
+1) onkeydown
+2) onkeyup
+
+
+
+
+arguments of key events are 
+a . keyCode => it return ASCII value of key pressed
+b . which => it return ASCII value of key pressed
+c. charCode => it return ASCII value of key pressed   
+d. key => it return actual key pressed
+e. code => it return actual key pressed   
+f. altKey => it return true if alt key is pressed otherwise false
+g. ctrlKey => it return true if ctrl key is pressed otherwise false
+h. shiftKey => it return true if shift key is pressed otherwise false
+   
+   
+    -->
