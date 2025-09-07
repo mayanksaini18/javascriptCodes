@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .product-gallery {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .thumbnail-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            order: 1; /* Thumbnails on the left */
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #007bff;
+        }
+
+        .main-image-container {
+            order: 2; /* Main image on the right */
+        }
+
+        #main-image {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="product-gallery">
+        <div class="thumbnail-container">
+            <!-- Actual product images -->
+            <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Camera Front View" class="thumbnail active">
+            <img src="https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Camera Side View" class="thumbnail">
+            <img src="https://images.pexels.com/photos/3907507/pexels-photo-3907507.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Camera with accessories" class="thumbnail">
+            <img src="https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Camera on tripod" class="thumbnail">
+        </div>
+        <div class="main-image-container">
+            <!-- The main image will be updated by JavaScript -->
+            <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Main Product Image" id="main-image">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainImage = document.getElementById('main-image');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    // Update the main image src to match the clicked thumbnail's src
+                    mainImage.src = this.src;
+                    
+                    // Update the active class on thumbnails
+                    // First, remove 'active' from all thumbnails
+                    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                    
+                    // Then, add 'active' to the clicked thumbnail
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
